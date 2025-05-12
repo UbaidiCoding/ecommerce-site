@@ -1,0 +1,7 @@
+[
+  { "name": "Product 1", "price": 10, "img": "/produc-img/1.jpg" },
+  { "name": "Product 2", "price": 20, "img": "/produc-img/2.jpg" },
+  { "name": "Product 3", "price": 15, "img": "/produc-img/3.jpg" },
+  { "name": "Product 4", "price": 12, "img": "/produc-img/4.jpg" },
+  { "name": "Product 5", "price": 18, "img": "https://via.placeholder.com/150" }
+]

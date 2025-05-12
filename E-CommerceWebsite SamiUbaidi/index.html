@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>By me Product - Samiullah Samejo</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0f0f0f;
+      color: #fff;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background: #000;
+      box-shadow: 0 0 15px #0ff;
+    }
+    .logo {
+      font-size: 1.5em;
+      color: #0ff;
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    /* SLIDER CSS */
+    .slider {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slide.active {
+      opacity: 1;
+    }
+    .slide-text {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 2em;
+      color: #0ff;
+      background: rgba(0,0,0,0.5);
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 40px 0 20px;
+      color: #0ff;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      padding: 0 40px;
+    }
+    .product {
+      background: #111;
+      padding: 20px;
+      border: 2px solid #0ff;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px #0ff;
+    }
+    .product img {
+      width: 100%;
+      border-radius: 5px;
+    }
+    .product button {
+      margin-top: 10px;
+      padding: 10px;
+      background: #0ff;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .cart-summary {
+      text-align: center;
+      margin: 30px;
+      font-size: 1.2em;
+      color: #0f0;
+    }
+    .order-form {
+      margin: 60px auto;
+      text-align: center;
+    }
+    .order-form input {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      border: 1px solid #0ff;
+      border-radius: 5px;
+      background: #000;
+      color: #fff;
+    }
+    .order-form button {
+      padding: 10px 20px;
+      background: #0ff;
+      border: none;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    #order-msg {
+      margin-top: 15px;
+      font-size: 1.2em;
+      color: #0f0;
+    }
+    footer {
+      display: flex;
+      justify-content: space-around;
+      background: #000;
+      padding: 30px;
+      border-top: 2px solid #0ff;
+    }
+    .footer-box {
+      text-align: center;
+    }
+    .footer-box a, .footer-box p, .footer-box small {
+      color: #0ff;
+      display: block;
+      margin: 5px 0;
+    }
+    .payment-logos img {
+      height: 40px;
+      margin: 5px;
+    }
+
+    #about, #contact {
+      padding: 40px;
+      text-align: center;
+      background: #111;
+      color: #0ff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Samiullah Samejo Shop</div>
+    <nav>
+      <ul>
+        <li><a href="#slider">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Slider Section -->
+  <section class="slider" id="slider">
+    <div class="slide active" style="background-image: url('/offer/img1.png');">
+      <div class="slide-text">Hot Offers</div>
+    </div>
+    <div class="slide" style="background-image: url('/offer/img4.png');">
+      <div class="slide-text">New Arrivals</div>
+    </div>
+    <div class="slide" style="background-image: url('/offer/img2.png');">
+      <div class="slide-text">Best Deals</div>
+    </div>
+  </section>
+
+  <main id="products">
+    <h2 class="section-title">Featured Products</h2>
+    <div class="products" id="product-list">
+      <!-- Products loaded from JSON -->
+    </div>
+  </main>
+
+  <div class="cart-summary">
+    <p>Total Items: <span id="cart-count">0</span></p>
+    <p>Total Amount: $<span id="total-amount">0.00</span></p>
+  </div>
+
+  <section class="order-form">
+    <h2>Place Your Order</h2>
+    <form onsubmit="orderPlaced(event)">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Email" required />
+      <input type="text" placeholder="Address" required />
+      <button type="submit">Order Now</button>
+    </form>
+    <p id="order-msg"></p>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p style="max-width: 800px; margin: auto;">
+      Welcome to Samiullah Samejo Shop – your one-stop destination for quality products at unbeatable prices. We are passionate about customer satisfaction and aim to provide the best shopping experience possible.
+    </p>
+    <p style="max-width: 800px; margin: auto;">
+      Our collections are handpicked to ensure variety, quality, and affordability. Whether you're shopping for the latest trends or daily essentials, we've got you covered.
+    </p>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: devsamiubaidi@gmail.com`</p>
+    <p>Phone: +92-3420372799</p>
+    <p>Follow us on social media to stay updated on new products and offers!</p>
+  </section>
+
+  <footer>
+    <div class="footer-box">
+      <p>Links</p>
+      <a href="#slider">Home</a>
+      <a href="#about">About</a>
+    </div>
+    <div class="footer-box">
+      <p>Social</p>
+      <a href="#">Join Us</a>
+      <small>&copy; 2025 Samiullah Samejo</small>
+    </div>
+    <div class="footer-box">
+      <p>Contact</p>
+      <p>Email: devsamiubaidi@gmail.com</p>
+    </div>
+    <div class="footer-box payment-logos">
+      <p>We Accept</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Visa_2021.svg" alt="Visa">
+    </div>
+  </footer>
+
+  <script>
+    let cartCount = 0;
+    let totalAmount = 0;
+
+    function renderProducts(products) {
+      const container = document.getElementById('product-list');
+      container.innerHTML = "";
+      products.forEach(p => {
+        const div = document.createElement('div');
+        div.className = 'product';
+        div.innerHTML = `
+          <img src="${p.img}" alt="${p.name}" />
+          <h3>${p.name}</h3>
+          <p>$${p.price}</p>
+          <button onclick="addToCart('${p.name}', ${p.price})">Add to Cart</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function addToCart(productName, price) {
+      cartCount++;
+      totalAmount += price;
+      document.getElementById('cart-count').innerText = cartCount;
+      document.getElementById('total-amount').innerText = totalAmount.toFixed(2);
+      alert(productName + " added to cart!");
+    }
+
+    function orderPlaced(event) {
+      event.preventDefault();
+      document.getElementById("order-msg").innerText = "🎉 Thank you! Your order has been placed.";
+    }
+
+    // Load products from JSON
+    fetch('products.json')
+      .then(res => res.json())
+      .then(data => renderProducts(data))
+      .catch(err => console.error('Error loading products:', err));
+
+    // Slider logic
+    let slideIndex = 0;
+    setInterval(() => {
+      const slides = document.querySelectorAll('.slide');
+      slides.forEach((s, i) => s.classList.remove('active'));
+      slideIndex = (slideIndex + 1) % slides.length;
+      slides[slideIndex].classList.add('active');
+    }, 3000);
+  </script>
+</body>
+</html>
