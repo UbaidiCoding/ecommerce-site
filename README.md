@@ -1,16 +1,35 @@
+# 🛍️ Simple E-Commerce Website by Samiullah Samejo
 
-## 📸 Demo Preview
+A responsive, modern e-commerce website built using **HTML, CSS, JavaScript, and JSON**. This project features a dynamic product listing, shopping cart functionality, smooth animations, and an order placement form — all wrapped in a sleek dark-neon UI.
 
-### 🔗 [Watch the YouTube Demo](https://www.youtube.com/@Code_withsami_Ubaidi)
-### 🔗 [View GitHub Repository](https://github.com/codewithsamiubaidi/ecommerce-site)
+## 🚀 Features
 
-![Preview](https://via.placeholder.com/800x400.png?text=E-commerce+Website+Preview)
+- 🔥 Responsive design for all devices
+- 🧊 Image slider with promotional banners
+- 🛒 Add-to-cart and real-time cart summary
+- 🧾 JSON-based product data loading
+- 📦 Order form with confirmation message
+- 🎨 Neon-styled UI with smooth transitions
+- 🔐 Clean and modular codebase
 
----
+## 💻 Technologies Used
 
-## 📦 How to Use
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
+- JSON (local)
 
-1. Clone the repository:
+## 📂 Folder Structure
 
-```bash
-git clone https://github.com/UbaidiCodeing/ecommerce-site.git
+ecommerce-site/
+├── index.html
+├── style.css
+├── script.js
+├── products.json
+├── /offer/
+│ ├── img1.png
+│ ├── img2.png
+│ └── img4.png
+└── README.md
+
+
